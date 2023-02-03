@@ -1,0 +1,197 @@
+/* O * define a configuração para todos os elementos da página*/
+* {
+  /*define a margem da página como 0, tirando todo o recúo*/
+  margin: 0;
+  /*define o espaçamento entre os elementos como 0, tirando todo o recúo*/
+  padding: 0;
+  /*Considera apenas o width ou height da caixa(div), desconsiderando o padding e o margin*/
+  box-sizing: border-box;
+}
+
+:root {
+  /*cria uma variável para receber uma cor, que será usada para preencher a borda dos cartões*/
+  --card-color-primary: #f7dd43;
+}
+
+ul {
+  /*tira o ponto que é colocado antes dos itens da lista*/
+  list-style: none;
+}
+
+body {
+  /*define a cor do plano de fundo como preto*/
+  background-color: black;
+  /*define a imagem que será usada no plano de fundo*/
+  background-image: url("./assets/bg.svg");
+  /*coloca a imagem de fundo no centro da página (pelo eixo x)*/
+  background-position-x: center;
+  /*define o posicionamento da imagem de fundo no eixo y*/
+  background-position-y: -680px;
+}
+
+body * {
+  /*define a fonte que será usada dentro do body*/
+  font-family: 'Roboto', sans-serif;
+}
+
+header h2 {
+  color: white;
+  padding-top: 20px;
+  font-size: 30px;
+}
+
+#app {
+  /*força para colocar todo o conteúdo dentro do id app*/
+  width: fit-content;
+  /*define a margem de cima e baixo como 52px e os lados como automático*/
+  margin: 52px auto;
+}
+
+header {
+  /*distancia entre este elemento e o próximo*/
+  margin-bottom: 63px;
+  /*deixa o texto centralizado*/
+  text-align: center;
+}
+
+.card {
+  /*configura o espaçamento interno dos elementos como 32px(cima e baixo), e 23px(lados)*/
+  padding: 32px 23px;
+  text-align: center;
+  /*define a cor de fundo do elemento antes(#202024)*/
+  background: #584035;
+  /*define a cor da borda de baixo dos cartões de acordo com a cor de --card-color-primary*/
+  border-bottom: 2px solid var(--card-color-primary);
+  /*deixa a borda arredondada*/
+  border-radius: 6px;
+}
+
+.card h2 {
+  /*define a espessura, o tipo e a cor da borda*/
+  border: 1px solid #12d82c;
+  border-radius: 6px;
+  padding: 8px 16px;
+  /*usado para organizar elementos internos dentro de um elemento pai de forma responsiva*/
+  display: flex;
+  /*define o espaçamento para o próximo item que contém o display flex*/
+  gap: 16px;
+  /*alinha o texto dentro de um elemento que contém o display flex*/
+  justify-content: center;
+  /*centraliza os elementos na linha, independente da quantidade de caracteres que ele tenha*/
+  margin-inline: auto;
+  /*coloca uma distancia de 53px entre este elemento e o próximo(fora do .card h2)*/
+  margin-bottom: 53px;
+  /*define a cor do texto como o contéudo da variável --card-color-primary (amarelo)*/
+  color: var(--card-color-primary);
+  /*o programa "se vira" para colocar todo o conteúdo dentro da largura deste elemento*/
+  width: fit-content;
+  /*centraliza os itens dentro de um elemento display flex (eixo transversal)*/
+  align-items: center;
+}
+
+.card h2 span {
+  color: #E1E1E6;
+  /*define o tamanho da fonte*/
+  font-size: 14px;
+  /*Coloca todas as letras em maiúsculas*/
+  text-transform: uppercase;
+}
+
+.card ul {
+  display: flex;
+  /*exibe o conteúdo em forma de coluna*/
+  flex-direction: column;
+  gap: 24px;
+}
+
+/*faz algo no li que está depois de outro li que está dentro de ul que está dentro da classe card*/
+.card ul li+li {
+  padding-top: 24px;
+  /*define a cor da borda de acordo com o conteúdo de --card-color-primary(amarelo)*/
+  border-top: 1px solid var(--card-color-primary);
+}
+
+.card ul li {
+  display: flex;
+  align-items: center;
+  /*coloca um espaçamento entre os itens da linha*/
+  justify-content: space-between;
+  /*define a margem da página como 0*/
+  width: 270px;
+  /*define a largura como sendo 270 pixels*/
+}
+
+.card ul li strong {
+  font-size: 36px;
+  /*define a altura da linha*/
+  line-height: 125%;
+  color: #E1E1E6;
+}
+
+/*coloca uma animação quando se passa o mouse encima do elemento strong dentro de li que está dentro de ul que está dentro de .card (assim como .card ul li img)*/
+.card ul li strong:hover,
+.card ul li img:hover {
+  /*o transform cria a animaçao e o scale é responsável por dar um zoom ao texto (nesse caso 10%)*/
+  transform: scale(1.1);
+
+}
+
+.card ul li strong:hover,
+.card ul li img:hover {
+  /*tempo que a animação acontece*/
+  transition: transform 0.4s;
+
+}
+
+/*o primeiro elemento (indicado pelo número dentro do parênteses) de .card, fará o comando a seguir */
+.card:nth-child(1) {
+  /*o programa espera 0.2 segundos para começar a animação*/
+  animation-delay: .2s;
+}
+
+.card:nth-child(2) {
+  animation-delay: .4s;
+}
+
+.card:nth-child(3) {
+  animation-delay: .6s;
+}
+
+/*Cria a animação de desaparecimento*/
+@keyframes appear {
+
+  /*começa invisível*/
+  0% {
+    opacity: 0;
+  }
+
+  /*no fim, aparece*/
+  100% {
+    opacity: 100%;
+  }
+}
+
+.card {
+  /*a animação será chamada, executada em 2 segundos e depois manterá o jeito que ela acabou (através do forwards)*/
+  animation: appear 2s forwards;
+  /*começa com o opacity 0*/
+  opacity: 0;
+}
+
+#cards {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+/*configura a tela do navegador, se a tela for maior que 700px, o programa fará o código a seguir*/
+@media (min-width: 700px) {
+  #cards {
+    /*define a largura máxima de um elemento*/
+    max-width: 670px;
+    /*define o modo de exibição para em linha*/
+    flex-direction: row;
+    /*joga o conteúdo para a linha de baixo se não couber no navegador*/
+    flex-wrap: wrap;
+  }
+}
