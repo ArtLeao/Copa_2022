@@ -6,9 +6,14 @@ Esta aplicação exibe uma tabela completa dos jogos da primeira fase da copa do
 
 Este projeto ainda está em andamento :warning:
 
+### Próximos passos
+
+- Inserir os resultados dos jogos
+- Inserir as fases eliminatórias
+
 ### Deploy
 
-Para visualizar a aplicação deste projeto,  <a href="https://artleao.github.io/buscador_cep" target="_blank">clique aqui</a>.
+Para visualizar a aplicação deste projeto,  <a href="https://artleao.github.io/Copa_2022" target="_blank">clique aqui</a>.
 
 ### Como rodar o projeto
 
